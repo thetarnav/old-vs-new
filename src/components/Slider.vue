@@ -2,8 +2,11 @@
 import { ref, defineComponent } from 'vue'
 
 export default defineComponent({
+	name: 'Slider',
 	setup() {
-		const activeIndex = ref(0)
+		const activeIndex = ref(0),
+			random = ref(Date.now()),
+			lastDirection = ref<0 | -1 | 1>(0)
 
 		const enableClass = (index: number): boolean =>
 			[index, index + 12].includes((activeIndex.value % 12) + 12)
@@ -16,9 +19,17 @@ export default defineComponent({
 			'far-right': enableClass(index - 1),
 		})
 
+		const changeSlide = (direction: 1 | -1) => {
+			lastDirection.value = direction
+			activeIndex.value += direction
+			random.value = Date.now()
+		}
+
 		return {
 			getClasses,
-			activeIndex,
+			changeSlide,
+			random,
+			lastDirection,
 		}
 	},
 })
@@ -48,16 +59,23 @@ export default defineComponent({
 				</section>
 			</template>
 
-			<div class="move"></div>
-			<div class="center-bg"></div>
-			<div class="move"></div>
+			<div class="move" @click="changeSlide(1)"></div>
+			<div
+				class="center-bg"
+				:class="{
+					'anim-next': lastDirection === -1,
+					'anim-prev': lastDirection === 1,
+				}"
+				:key="random + '.center-bg'"
+			></div>
+			<div class="move" @click="changeSlide(-1)"></div>
 			<nav id="travel-slider-nav">
-				<a @click="activeIndex++">
+				<a @click="changeSlide(1)">
 					<img src="/svg/arrow-down.svg" class="arrow-icon svg" />
 					<div></div>
 				</a>
 				<p id="travel-slider-help"></p>
-				<a @click="activeIndex--">
+				<a @click="changeSlide(-1)">
 					<img src="/svg/arrow-down.svg" class="arrow-icon svg" />
 					<div></div>
 				</a>
