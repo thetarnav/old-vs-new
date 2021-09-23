@@ -1,0 +1,66 @@
+---
+	import Default from '../default.astro'
+---
+
+<Default>
+
+<section id="travel-slider-containder">
+  <div id="travel-slider" default-slide="1">
+    <section>
+      <img src="/img/spain_bridge.jpg"/>
+      <footer><p>Hiszpania</p></footer>
+    </section>
+    <section>
+      <img src="/img/12.jpg"/>
+      <footer><p>Portugalia</p></footer>
+    </section>
+    <section>
+      <img src="/img/spain_poz.jpg"/>
+      <footer><p>Inne</p></footer>
+    </section>
+    <div class="move"></div>
+    <div class="center-bg"></div>
+    <div class="move"></div>
+    <nav id="travel-slider-nav">
+
+      <a>
+        <img src="/svg/arrow-down.svg" class="arrow-icon svg">
+        <div></div>
+      </a>
+      <p id="travel-slider-help"></p>
+      <a>
+        <img src="/svg/arrow-down.svg" class="arrow-icon svg">
+        <div></div>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<section class="parallax-box parallax-background">
+  <img src="/img/background-1000-01.jpg" class="parallax-image" alt="">
+
+  <main id="wrapper">
+    <header>
+      <div id="progress-nav-container">
+        <nav id="progress-nav">
+          <main>
+            <a>doświadczenia</a>
+            <a>zakwaterownie</a>
+            <a>atrakcje</a>
+            <a>ceny</a>
+          </main>
+        </nav>
+      </div>
+    </header>
+
+    <div class="dummy"></div>
+
+    <footer>
+      lorem ipsum
+    </footer>
+  </main>
+</section>
+
+<script type="text/javascript" src={Astro.resolve("../js/travel-slider.js")}></script>
+
+</Default>

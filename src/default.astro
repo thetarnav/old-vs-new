@@ -1,0 +1,26 @@
+---
+	import HtmlHead from './components/HtmlHead.astro'
+	import Footer from './components/Footer.astro'
+	import Nav from './components/Nav.astro'
+---
+<html lang="pl-PL">
+<HtmlHead />
+<body>
+
+<div id="loader">
+      <section class="side"></section>
+      <section class="side"></section>
+      <div class="animation"></div>
+   </div>
+
+<Nav/>
+
+<slot/>
+
+<Footer/>
+
+
+<script type="text/javascript" src={Astro.resolve("./js/script.js")}></script>
+
+</body>
+</html>
